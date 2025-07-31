@@ -21,7 +21,6 @@ A simple modular JavaScript project that generates a random user profile using d
 
 ![Screenshot of RUPG](assets/screenshot.png)
 
-_Place `rupg-preview.png` inside a `docs/` folder at the project root (create it if it doesn't exist)._
 
 ## 🗂 Project Structure
 
