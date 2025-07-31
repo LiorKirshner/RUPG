@@ -1,8 +1,8 @@
 export class Model {
-  async fetchUserData() {
-    const res = await fetch("https://randomuser.me/api/?results=1");
-    if (!res.ok) throw new Error("Failed to fetch user");
+  async fetchUsers() {
+    const res = await fetch("https://randomuser.me/api/?results=7");
+    if (!res.ok) throw new Error("Failed to fetch users");
     const data = await res.json();
-    return data.results[0]; // Return the first user only
+    return data.results; // Return array of 7 users
   }
 }

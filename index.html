@@ -3,13 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RUGB Project</title>
+    <title>RUPG Project</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <button id="loadUserBtn">Load User</button>
-    <div id="app"></div>
+    <!-- Generate Button -->
+    <div class="generate-btn-wrapper">
+      <button id="loadUserBtn">Generate User</button>
+    </div>
+
+    <main class="user-profile">
+      <!-- Header -->
+      <header class="profile-header">
+        <div class="profile-image-wrapper">
+          <img src="" alt="User Image" class="profile-image" />
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">Full Name</h2>
+          <p class="profile-location">City, Country</p>
+        </div>
+      </header>
+
+      <!-- Quote -->
+      <section class="quote-section">
+        <h3>Favorite quote:</h3>
+        <p class="quote-text">"User's favorite quote here."</p>
+        <p class="quote-author">- Author</p>
+      </section>
+
+      <!-- Favorite Pokémon -->
+      <section class="pokemon-section">
+        <img src="" alt="Favorite Pokemon" class="pokemon-image" />
+        <p class="pokemon-name">Favorite Pokémon: Pikachu</p>
+      </section>
+
+      <!-- About -->
+      <section class="about-section">
+        <h3>About me</h3>
+        <p class="about-text">Short description here...</p>
+      </section>
+    </main>
+
+    <!-- Friends List -->
+    <aside class="friends-sidebar">
+      <h3>Friends</h3>
+      <ul class="friends-list">
+        <li>Friend 1</li>
+        <li>Friend 2</li>
+        <li>Friend 3</li>
+        <li>Friend 4</li>
+        <li>Friend 5</li>
+      </ul>
+    </aside>
+
     <script type="module" src="main.js"></script>
   </body>
 </html>

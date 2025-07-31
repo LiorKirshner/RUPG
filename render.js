@@ -1,8 +1,19 @@
 export class Renderer {
   renderUser(user) {
-    $("#app").html(`
-      <h2>${user.name.first} ${user.name.last}</h2>
-      <img src="${user.picture.large}" alt="User Picture" />
-    `);
+    $(".profile-name").text(`${user.name.first} ${user.name.last}`);
+    $(".profile-image").attr("src", user.picture.large);
+    $(".profile-location").text(
+      `${user.location.city}, ${user.location.state}`
+    );
+  }
+
+  renderFriends(friends) {
+    const $list = $(".friends-list");
+    $list.empty();
+
+    friends.forEach((friend) => {
+      const fullName = `${friend.name.first} ${friend.name.last}`;
+      $list.append(`<li>${fullName}</li>`);
+    });
   }
 }
