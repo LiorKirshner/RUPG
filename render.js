@@ -1,5 +1,8 @@
 export class Renderer {
-  renderUser(userData) {
-    // This will later update the DOM with the user info
+  renderUser(user) {
+    $("#app").html(`
+      <h2>${user.name.first} ${user.name.last}</h2>
+      <img src="${user.picture.large}" alt="User Picture" />
+    `);
   }
 }

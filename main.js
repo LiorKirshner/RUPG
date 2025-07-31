@@ -4,8 +4,12 @@ import { Renderer } from "./render.js";
 const model = new Model();
 const renderer = new Renderer();
 
-document.addEventListener("DOMContentLoaded", async () => {
-  // Example usage – later you'll fill this in
-  // const userData = await model.fetchUserData();
-  // renderer.renderUser(userData);
+// Fetch and render user only on button click
+document.getElementById("loadUserBtn").addEventListener("click", async () => {
+  try {
+    const user = await model.fetchUserData();
+    renderer.renderUser(user);
+  } catch (err) {
+    console.error("Error loading user:", err.message);
+  }
 });
