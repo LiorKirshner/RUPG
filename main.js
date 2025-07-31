@@ -16,6 +16,7 @@ document.getElementById("loadUserBtn").addEventListener("click", async () => {
   $("#content").show();
   // Load additional data in parallel
   await loadQuote();
+  await loadPokemon();
 });
 
 async function loadUsers() {
@@ -34,5 +35,14 @@ async function loadQuote() {
     renderer.renderQuote(quote);
   } catch (err) {
     console.error("Error loading quote:", err.message);
+  }
+}
+
+async function loadPokemon() {
+  try {
+    const pokemon = await model.fetchPokemon();
+    renderer.renderPokemon(pokemon);
+  } catch (err) {
+    console.error("Error loading pokemon:", err.message);
   }
 }
