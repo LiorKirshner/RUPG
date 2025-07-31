@@ -60,3 +60,14 @@ document.getElementById("saveUserBtn").addEventListener("click", () => {
   const data = model.getData();
   localStorage.setItem("savedUserPage", JSON.stringify(data));
 });
+
+document.getElementById("loadUserBtn").addEventListener("click", () => {
+  const savedData = JSON.parse(localStorage.getItem("savedUserPage"));
+  if (!savedData) return alert("No saved data found.");
+
+  renderer.renderUser(savedData.mainUser);
+  renderer.renderFriends(savedData.friends);
+  renderer.renderQuote(savedData.quote);
+  renderer.renderPokemon(savedData.pokemon);
+  renderer.renderBacon(savedData.bacon);
+});
