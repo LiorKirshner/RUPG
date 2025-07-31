@@ -63,7 +63,7 @@ Handles the DOM:
 
 1. **Clone** the repository
    ```bash
-   git clone &lt;https://github.com/LiorKirshner/RUPG/l&gt;
+   git clone &lt;your-repo-url&gt;
    ```
 2. **Open** `index.html` in your browser
 3. **Hack away!** Build awesome features step‑by‑step 🔥
