@@ -23,9 +23,15 @@ export class Model {
   }
 
   async fetchPokemon() {
-    const randomId = Math.floor(Math.random() * 1025) + 1;
+    const coolPokemonIds = [6, 25, 94, 149, 197, 448, 282, 143, 248, 658, 384];
+    const useCool = Math.random() < 0.5;
+
+    const id = useCool
+      ? coolPokemonIds[Math.floor(Math.random() * coolPokemonIds.length)]
+      : Math.floor(Math.random() * 1025) + 1;
+
     const data = await this.safeFetch(
-      `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      `https://pokeapi.co/api/v2/pokemon/${id}`
     );
     return {
       name: data.name,
