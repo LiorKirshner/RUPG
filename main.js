@@ -55,3 +55,8 @@ async function loadBacon() {
     console.error("Error loading Bacon Ipsum API:", err.message);
   }
 }
+
+document.getElementById("saveUserBtn").addEventListener("click", () => {
+  const data = model.getData();
+  localStorage.setItem("savedUserPage", JSON.stringify(data));
+});

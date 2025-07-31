@@ -1,4 +1,12 @@
 export class Model {
+  constructor() {
+    this.mainUser = null;
+    this.friends = [];
+    this.quote = "";
+    this.bacon = "";
+    this.pokemon = null;
+  }
+
   async safeFetch(url) {
     // A reusable helper for all API requests
     // Handles fetch, response validation, and JSON parsing in one place
@@ -11,22 +19,24 @@ export class Model {
   async fetchUsers() {
     const data = await this.safeFetch("https://randomuser.me/api/?results=8");
 
-    const mainUser = data.results[0];
-    const friends = data.results.slice(1);
+    this.mainUser = data.results[0];
+    this.friends = data.results.slice(1);
 
-    return { mainUser, friends };
+    return { mainUser: this.mainUser, friends: this.friends };
   }
 
   async fetchQuote() {
     const data = await this.safeFetch("https://api.kanye.rest");
-    return data.quote;
+    this.quote = data.quote;
+    return this.quote;
   }
 
   async fetchBacon() {
     const text = await this.safeFetch(
       "https://baconipsum.com/api/?type=all-meat&sentences=5&start-with-lorem=1"
     );
-    return text;
+    this.bacon = text;
+    return this.bacon;
   }
 
   async fetchPokemon() {
@@ -41,9 +51,20 @@ export class Model {
     const data = await this.safeFetch(
       `https://pokeapi.co/api/v2/pokemon/${id}`
     );
-    return {
+    this.pokemon = {
       name: data.name,
       image: data.sprites.front_default,
+    };
+    return this.pokemon;
+  }
+
+  getData() {
+    return {
+      mainUser: this.mainUser,
+      friends: this.friends,
+      quote: this.quote,
+      bacon: this.bacon,
+      pokemon: this.pokemon,
     };
   }
 }
