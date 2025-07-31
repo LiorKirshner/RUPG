@@ -3,7 +3,8 @@
 /* ============================= */
 
 /* --- Header (Profile Section) --- */
-.profile-header {
+.profile-header,
+.pokemon-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -50,8 +51,7 @@
 } */
 
 /* --- Pokemon Section --- */
-/* .pokemon-section {
-  
+/*.pokemon-section {
 }
 
 @media (max-width: 600px) {
