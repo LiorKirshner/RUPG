@@ -1,65 +1,75 @@
-# 📄 Random User Page Generator
+# 📄 Random User Page Generator (RUPG)
 
-A simple modular JavaScript project that generates a random user profile using data from public APIs.  
-Built with HTML, CSS, and vanilla JS using a clean separation of concerns.
+A simple modular JavaScript project that generates a random user profile using data from public APIs. Built with HTML, CSS, and vanilla JS, following a clean separation of concerns.
 
----
+## 📑 Table of Contents
 
-## 📁 Project Structure
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [File Responsibilities](#file-responsibilities)
+- [Getting Started](#getting-started)
+- [Tech Stack](#tech-stack)
 
-├── index.html # The main HTML file – basic structure of the page
-├── style.css # All styles and visual design
-├── main.js # Entry point: coordinates logic, initializes app
-├── model.js # Handles data logic – fetching, transforming, storing
-├── render.js # Responsible for rendering DOM elements
+## ✨ Features
 
----
+- Generates Facebook‑style profile pages populated with random user data in one click
+- Fully modular: model–view–controller split for easy maintenance
+- Framework‑free — just ES6 modules, HTML5, and CSS3
 
-## 🔹 File Responsibilities
+## 🗂 Project Structure
+
+```text
+├── index.html  # Main HTML skeleton
+├── style.css   # All styles and visual design
+├── main.js     # App entry point & controller logic
+├── model.js    # Data layer: fetching, transforming, storing
+└── render.js   # View layer: DOM rendering and updates
+```
+
+## 📄 File Responsibilities
 
 ### `index.html`
 
-Contains the root structure of the web page. It loads all necessary scripts and links the CSS file.
+Provides the basic page markup and links scripts & stylesheets.
 
 ### `style.css`
 
-Defines all visual styling for the project – layout, colors, fonts, etc.
+Holds all visual styling: layout, colors, fonts, and responsive rules.
 
 ### `main.js`
 
-Acts as the app’s main controller. It:
+Coordinates the app:
 
-- Imports functions from `model.js` and `render.js`
-- Orchestrates the interaction between data and UI
+- Imports from `model.js` & `render.js`
+- Bridges data and UI
 - Initializes the page on load
 
 ### `model.js`
 
-Deals with all data-related functionality:
+Manages data:
 
-- API requests
-- Data parsing
-- Local state (if any)
+- Performs API requests
+- Parses and normalizes responses
+- Stores any local state
 
 ### `render.js`
 
-Contains all DOM-related code:
+Handles the DOM:
 
-- Renders elements to the screen
-- Updates the view when data changes
+- Renders page elements
+- Updates the UI when data changes
 
----
+## 🚀 Getting Started
 
-## ✅ Getting Started
+1. **Clone** the repository
+   ```bash
+   git clone &lt;https://github.com/LiorKirshner/RUPG/l&gt;
+   ```
+2. **Open** `index.html` in your browser
+3. **Hack away!** Build awesome features step‑by‑step 🔥
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Start coding and build awesome features step-by-step!
+## ⚙️ Tech Stack
 
----
-
-## 🚀 Tech Stack
-
-- HTML5
-- CSS3
-- JavaScript (ES6 Modules)
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6 Modules)**
