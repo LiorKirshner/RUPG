@@ -23,6 +23,7 @@ export class Model {
   }
 
   async fetchPokemon() {
+    //randomly select from cool list or full Pokédex
     const coolPokemonIds = [6, 25, 94, 149, 197, 448, 282, 143, 248, 658, 384];
     const useCool = Math.random() < 0.5;
 
