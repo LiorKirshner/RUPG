@@ -86,11 +86,33 @@
 } */
 
 /* --- Button Wrapper --- */
-.generate-btn-wrapper {
+.Toolbar-section {
   position: fixed;
   bottom: 0;
   left: 0;
-  margin: 2%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  margin: 0;
+}
+
+/* Center the buttons inside their wrappers and set flex properties */
+.generate-btn-wrapper,
+.save-btn-wrapper,
+.load-btn-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Set a fixed max-width and width for the buttons */
+.generate-btn-wrapper button,
+.save-btn-wrapper button,
+.load-btn-wrapper button {
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
 }
 
 /*@media (max-width: 600px) {

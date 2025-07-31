@@ -4,18 +4,20 @@ import { Renderer } from "./render.js";
 const model = new Model();
 const renderer = new Renderer();
 
-document.getElementById("loadUserBtn").addEventListener("click", async () => {
-  try {
-    await loadUsers(); // Must succeed first
-  } catch (err) {
-    console.error("Critical error: could not load main user data");
-    return;
-  }
-  // Load additional data in parallel
-  await loadQuote();
-  await loadPokemon();
-  await loadBacon();
-});
+document
+  .getElementById("generateUserBtn")
+  .addEventListener("click", async () => {
+    try {
+      await loadUsers(); // Must succeed first
+    } catch (err) {
+      console.error("Critical error: could not load main user data");
+      return;
+    }
+    // Load additional data in parallel
+    await loadQuote();
+    await loadPokemon();
+    await loadBacon();
+  });
 
 async function loadUsers() {
   try {
