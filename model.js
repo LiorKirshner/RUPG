@@ -1,5 +1,7 @@
 export class Model {
   async safeFetch(url) {
+    // A reusable helper for all API requests
+    // Handles fetch, response validation, and JSON parsing in one place
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to fetch from ${url}`);
     const data = await res.json();
