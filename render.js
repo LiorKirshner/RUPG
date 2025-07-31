@@ -17,4 +17,8 @@ export class Renderer {
       $list.append(`<li>${fullName}</li>`);
     });
   }
+
+  renderQuote(quote) {
+    $(".quote-text").text(`"${quote}"`);
+  }
 }
