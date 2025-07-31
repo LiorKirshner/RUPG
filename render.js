@@ -8,6 +8,7 @@ export class Renderer {
   }
 
   renderFriends(friends) {
+    //friends data
     const $list = $(".friends-list");
     $list.empty();
 
