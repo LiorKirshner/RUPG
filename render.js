@@ -29,4 +29,12 @@ export class Renderer {
   renderBacon(text) {
     $(".about-text").text(text);
   }
+
+  renderUserPage(data) {
+    this.renderUser(data?.mainUser || null);
+    this.renderFriends(data?.friends || []);
+    this.renderQuote(data?.quote || null);
+    this.renderPokemon(data?.pokemon || null);
+    this.renderBacon(data?.bacon || null);
+  }
 }

@@ -60,19 +60,42 @@ document.getElementById("saveUserBtn").addEventListener("click", () => {
   const data = model.getData();
   const key = `${data.mainUser.name.first} ${data.mainUser.name.last}`;
 
-  const allUsers = JSON.parse(localStorage.getItem("users")) || {};
-  allUsers[key] = data;
+  let allUsers = JSON.parse(localStorage.getItem("users")) || {};
 
+  // Remove oldest entry if size exceeds 4 (before adding new one = 5 max)
+  const keys = Object.keys(allUsers);
+  if (!allUsers[key] && keys.length >= 5) {
+    const oldestKey = keys[0];
+    delete allUsers[oldestKey];
+
+    // Also remove option from dropdown if it exists
+    const optionToRemove = document.querySelector(
+      `#savedUsersSelect option[value="${oldestKey}"]`
+    );
+    if (optionToRemove) optionToRemove.remove();
+  }
+
+  allUsers[key] = data;
   localStorage.setItem("users", JSON.stringify(allUsers));
+
+  // Add new option to dropdown if not already there
+  const select = document.getElementById("savedUsersSelect");
+  if (!select.querySelector(`option[value="${key}"]`)) {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = key;
+    select.appendChild(option);
+  }
 });
 
-document.getElementById("loadUserBtn").addEventListener("click", () => {
-  const savedData = JSON.parse(localStorage.getItem("savedUserPage"));
-  if (!savedData) return alert("No saved data found.");
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("loadUserBtn").addEventListener("click", () => {
+    const selectedKey = document.getElementById("savedUsersSelect").value;
+    const allUsers = JSON.parse(localStorage.getItem("users")) || {};
+    const savedData = allUsers[selectedKey];
 
-  renderer.renderUser(savedData.mainUser);
-  renderer.renderFriends(savedData.friends);
-  renderer.renderQuote(savedData.quote);
-  renderer.renderPokemon(savedData.pokemon);
-  renderer.renderBacon(savedData.bacon);
+    if (!savedData) return alert("No saved data found.");
+
+    renderer.renderUserPage(savedData);
+  });
 });
