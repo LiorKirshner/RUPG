@@ -1,8 +1,37 @@
 export class Model {
-  async fetchUsers() {
-    const res = await fetch("https://randomuser.me/api/?results=7");
-    if (!res.ok) throw new Error("Failed to fetch users");
+  async safeFetch(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch from ${url}`);
     const data = await res.json();
-    return data.results; // Return array of 7 users
+    return data;
+  }
+
+  async fetchUsers() {
+    const data = await this.safeFetch("https://randomuser.me/api/?results=7");
+    return data.results;
+  }
+
+  async fetchQuote() {
+    const data = await this.safeFetch("https://api.kanye.rest");
+    return data.quote;
+  }
+
+  async fetchAllData() {
+    let users = [];
+    let quote = "This quote couldn't be loaded.";
+
+    try {
+      users = await this.fetchUsers();
+    } catch (err) {
+      console.error("User fetch failed:", err.message);
+    }
+
+    try {
+      quote = await this.fetchQuote();
+    } catch (err) {
+      console.error("Quote fetch failed:", err.message);
+    }
+
+    return { users, quote };
   }
 }
