@@ -1,0 +1,19 @@
+# Node.js (if you add tools later)
+node_modules/
+.env
+config.js
+
+# macOS system files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional build artifacts
+dist/
+build/
