@@ -21,7 +21,9 @@ export class Renderer {
   }
 
   renderPokemon(pokemon) {
-    $(".pokemon-name").text(`Favorite Pokémon: ${pokemon.name}`);
+    const properName =
+      pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    $(".pokemon-name").text(`Favorite Pokémon: ${properName}`);
     $(".pokemon-image").attr("src", pokemon.image);
   }
   renderBacon(text) {
