@@ -58,7 +58,12 @@ async function loadBacon() {
 
 document.getElementById("saveUserBtn").addEventListener("click", () => {
   const data = model.getData();
-  localStorage.setItem("savedUserPage", JSON.stringify(data));
+  const key = `${data.mainUser.name.first} ${data.mainUser.name.last}`;
+
+  const allUsers = JSON.parse(localStorage.getItem("users")) || {};
+  allUsers[key] = data;
+
+  localStorage.setItem("users", JSON.stringify(allUsers));
 });
 
 document.getElementById("loadUserBtn").addEventListener("click", () => {
