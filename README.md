@@ -5,6 +5,7 @@ A simple modular JavaScript project that generates a random user profile using d
 ## 📑 Table of Contents
 
 - [Features](#features)
+- [Preview](#preview)
 - [Project Structure](#project-structure)
 - [File Responsibilities](#file-responsibilities)
 - [Getting Started](#getting-started)
@@ -15,6 +16,12 @@ A simple modular JavaScript project that generates a random user profile using d
 - Generates Facebook‑style profile pages populated with random user data in one click
 - Fully modular: model–view–controller split for easy maintenance
 - Framework‑free — just ES6 modules, HTML5, and CSS3
+
+## 📸 Preview
+
+![Screenshot of RUPG](assets/screenshot.png)
+
+_Place `rupg-preview.png` inside a `docs/` folder at the project root (create it if it doesn't exist)._
 
 ## 🗂 Project Structure
 
