@@ -20,13 +20,9 @@ document.getElementById("loadUserBtn").addEventListener("click", async () => {
 
 async function loadUsers() {
   try {
-    const users = await model.fetchUsers();
-    if (users.length > 0) {
-      const mainUser = users[0];
-      const friends = users.slice(1, 7);
-      renderer.renderUser(mainUser);
-      renderer.renderFriends(friends);
-    }
+    const { mainUser, friends } = await model.fetchUsers();
+    renderer.renderUser(mainUser);
+    renderer.renderFriends(friends);
   } catch (err) {
     console.error("Error loading users:", err.message);
   }

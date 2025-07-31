@@ -8,17 +8,20 @@ export class Renderer {
   }
 
   renderFriends(friends) {
-    //friends data
     const $list = $(".friends-list");
     $list.empty();
 
     friends.forEach((friend) => {
-      const fullName = `${friend.name.first} ${friend.name.last}`;
-      $list.append(`<li>${fullName}</li>`);
+      $list.append(`<li>${friend.name.first} ${friend.name.last}</li>`);
     });
   }
 
   renderQuote(quote) {
     $(".quote-text").text(`"${quote}"`);
+  }
+
+  renderPokemon(pokemon) {
+    $(".pokemon-name").text(`Favorite Pokémon: ${pokemon.name}`);
+    $(".pokemon-image").attr("src", pokemon.image);
   }
 }
