@@ -15,23 +15,4 @@ export class Model {
     const data = await this.safeFetch("https://api.kanye.rest");
     return data.quote;
   }
-
-  async fetchAllData() {
-    let users = [];
-    let quote = "This quote couldn't be loaded.";
-
-    try {
-      users = await this.fetchUsers();
-    } catch (err) {
-      console.error("User fetch failed:", err.message);
-    }
-
-    try {
-      quote = await this.fetchQuote();
-    } catch (err) {
-      console.error("Quote fetch failed:", err.message);
-    }
-
-    return { users, quote };
-  }
 }
