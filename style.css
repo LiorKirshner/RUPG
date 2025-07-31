@@ -3,23 +3,23 @@
 /* ============================= */
 
 /* --- Header (Profile Section) --- */
-.profile-header,
-.pokemon-section {
+.profile-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 5%;
+  padding: 5%;
+  border-bottom: 1px solid #ccc;
+  background-color: #f9f9f9;
 }
 
 .profile-image-wrapper {
   width: 25%;
-  max-width: 120px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background-color: #e0e0e0; /* Placeholder background */
+  background-color: #f0f0f0;
   overflow: hidden;
-  text-align: center;
-  line-height: 120px; /* vertically center fallback text */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .profile-image {
@@ -28,14 +28,31 @@
   object-fit: cover;
 }
 
+.profile-name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-location {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
+}
+
 @media (max-width: 600px) {
   .profile-header {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
-  .profile-image {
+  .profile-image-wrapper {
     width: 50%;
+  }
+
+  .profile-image {
+    width: 100%;
   }
 }
 
