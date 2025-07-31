@@ -11,9 +11,6 @@ document.getElementById("loadUserBtn").addEventListener("click", async () => {
     console.error("Critical error: could not load main user data");
     return;
   }
-  // Hide intro button and show main content
-  $("#intro-btn").hide();
-  $("#content").show();
   // Load additional data in parallel
   await loadQuote();
   await loadPokemon();
