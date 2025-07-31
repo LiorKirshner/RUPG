@@ -24,4 +24,7 @@ export class Renderer {
     $(".pokemon-name").text(`Favorite Pokémon: ${pokemon.name}`);
     $(".pokemon-image").attr("src", pokemon.image);
   }
+  renderBacon(text) {
+    $(".about-text").text(text);
+  }
 }

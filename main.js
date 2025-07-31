@@ -14,6 +14,7 @@ document.getElementById("loadUserBtn").addEventListener("click", async () => {
   // Load additional data in parallel
   await loadQuote();
   await loadPokemon();
+  await loadBacon();
 });
 
 async function loadUsers() {
@@ -41,5 +42,14 @@ async function loadPokemon() {
     renderer.renderPokemon(pokemon);
   } catch (err) {
     console.error("Error loading pokemon:", err.message);
+  }
+}
+
+async function loadBacon() {
+  try {
+    const bacon = await model.fetchBacon();
+    renderer.renderBacon(bacon);
+  } catch (err) {
+    console.error("Error loading Bacon Ipsum API:", err.message);
   }
 }

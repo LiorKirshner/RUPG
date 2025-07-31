@@ -22,6 +22,13 @@ export class Model {
     return data.quote;
   }
 
+  async fetchBacon() {
+    const text = await this.safeFetch(
+      "https://baconipsum.com/api/?type=all-meat&sentences=5&start-with-lorem=1"
+    );
+    return text;
+  }
+
   async fetchPokemon() {
     //randomly select from cool list or full Pokédex
     const coolPokemonIds = [6, 25, 94, 149, 197, 448, 282, 143, 248, 658, 384];
