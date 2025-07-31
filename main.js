@@ -60,25 +60,32 @@ document.getElementById("saveUserBtn").addEventListener("click", () => {
   const data = model.getData();
   const key = `${data.mainUser.name.first} ${data.mainUser.name.last}`;
 
+  // טען את כל המשתמשים והמערך של המפתחות
   let allUsers = JSON.parse(localStorage.getItem("users")) || {};
+  let userKeys = JSON.parse(localStorage.getItem("userKeys")) || [];
 
-  // Remove oldest entry if size exceeds 4 (before adding new one = 5 max)
-  const keys = Object.keys(allUsers);
-  if (!allUsers[key] && keys.length >= 5) {
-    const oldestKey = keys[0];
+  // אם המשתמש כבר קיים, הסר אותו מהמערך כדי להכניס אותו מחדש בסוף
+  userKeys = userKeys.filter((k) => k !== key);
+
+  // הוסף את המשתמש החדש בסוף המערך
+  userKeys.push(key);
+  allUsers[key] = data;
+
+  // שמור רק 5 אחרונים
+  while (userKeys.length > 5) {
+    const oldestKey = userKeys.shift();
     delete allUsers[oldestKey];
-
-    // Also remove option from dropdown if it exists
+    // הסר גם מה-dropdown
     const optionToRemove = document.querySelector(
       `#savedUsersSelect option[value="${oldestKey}"]`
     );
     if (optionToRemove) optionToRemove.remove();
   }
 
-  allUsers[key] = data;
   localStorage.setItem("users", JSON.stringify(allUsers));
+  localStorage.setItem("userKeys", JSON.stringify(userKeys));
 
-  // Add new option to dropdown if not already there
+  // הוסף אופציה ל-dropdown אם לא קיימת
   const select = document.getElementById("savedUsersSelect");
   if (!select.querySelector(`option[value="${key}"]`)) {
     const option = document.createElement("option");
@@ -89,6 +96,30 @@ document.getElementById("saveUserBtn").addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Load saved users into dropdown
+  const select = document.getElementById("savedUsersSelect");
+  const allUsers = JSON.parse(localStorage.getItem("users")) || {};
+  const userKeys = JSON.parse(localStorage.getItem("userKeys")) || [];
+
+  userKeys.forEach((key) => {
+    if (!select.querySelector(`option[value="${key}"]`)) {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = key;
+      select.appendChild(option);
+    }
+  });
+
+  // Try to load last saved user automatically
+  if (userKeys.length > 0) {
+    const lastKey = userKeys[userKeys.length - 1];
+    renderer.renderUserPage(allUsers[lastKey]);
+    select.value = lastKey;
+  } else {
+    // If no saved user, generate a new one automatically
+    document.getElementById("generateUserBtn").click();
+  }
+
   document.getElementById("loadUserBtn").addEventListener("click", () => {
     const selectedKey = document.getElementById("savedUsersSelect").value;
     const allUsers = JSON.parse(localStorage.getItem("users")) || {};
